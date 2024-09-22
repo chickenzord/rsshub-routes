@@ -10,9 +10,10 @@ First, clone it to the location of your `docker-compose.yml`
 git clone git@github.com:chickenzord/rsshub-routes-tempoco.git
 ```
 
-Edit your `docker-compose.yml` accordingly:
+Then edit the yaml file accordingly:
 
 ```yaml
+# docker-compose.yml
 services:
   rsshub:
     container_name: rsshub
@@ -28,7 +29,7 @@ services:
       - ./rsshub-routes-tempoco:/app/lib/routes/tempoco:ro
 ```
 
-- `command`: The official docker image only use `npm run start` need to rebuild the routes by running `npm run build` beforehand.
+- `command`: The official docker image only use `npm run start`. We need to rebuild the routes by running `npm run build` beforehand.
 - `volumes`: Mount the cloned route repository in `/app/lib/routes`
 
 ## Development
