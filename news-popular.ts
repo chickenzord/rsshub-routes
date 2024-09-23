@@ -50,11 +50,12 @@ export const route: Route = {
                 const itemPubDate = item.find('h4.date').first();
                 const itemImage = item.find('img').first();
                 const itemDescription = item.find('article p').first();
+                const img = `<img src="${itemImage}"/><br/>`;
 
                 const result: DataItem = {
                     title: itemTitle.text(),
                     link: itemTitle.attr('href') || '',
-                    description: itemDescription.text(),
+                    description: img + itemDescription.text(),
                     image: itemImage.attr('src'),
                     pubDate: parseRelativeDate(itemPubDate.text().replace(' jam lalu', ' hours ago')),
                     language: 'id',
@@ -70,9 +71,11 @@ export const route: Route = {
                         const response = await ofetch(item.link!);
                         const $ = load(response);
 
+                        const img = `<img src="${item.image}"/><br/>`;
+
                         const content = $('.detail-konten').first();
                         if (content !== null && !content.is(':empty')) {
-                            item.description = content.html() || '';
+                            item.description = img + content.html() || '';
                         }
 
                         const author = $('span[itemprop="author"]').first();
