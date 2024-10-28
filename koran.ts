@@ -98,7 +98,7 @@ export const route: Route = {
             language: 'id',
             image: imageURL,
             allowEmpty: false,
-            ttl: 60 * 6,
+            ttl: 60 * 12,
         };
 
         return data;
